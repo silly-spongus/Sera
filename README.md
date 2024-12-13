@@ -4,7 +4,7 @@ dictionaries with primitive types. This library aims to do as few operations
 (table lookups, comparisons, etc.) as possible to achieve it's result while
 staying a good-enough serialization library.
 
-Sera's intended purpose is to help with serialization shemas when handling high-efficiency game entity replication to clients. Note that this is not a module for beginners and you should at least know the basics of using the `buffer` class.
+Sera's intended purpose is to help with serialization schemas when handling high-efficiency game entity replication to clients. Note that this is not a module for beginners and you should at least know the basics of using the [`buffer`](https://create.roblox.com/docs/reference/engine/libraries/buffer) class.
 
 ## Limitations:
 - Schemas can only hold up to 255 fields in Sera and it's going to stay that way - you may fork the project and easily change this for yourself.
