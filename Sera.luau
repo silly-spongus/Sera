@@ -18,6 +18,7 @@ MAD STUDIO
 		Sera.Uint32
 		Sera.Int8
 		Sera.Int16
+		Sera.Int24
 		Sera.Int32
 		Sera.Float32
 		Sera.Float64
@@ -175,6 +176,18 @@ Sera.Int16 = table.freeze({
 	end,
 	Des = function(b: buffer, offset: number): (number, number)
 		return buffer.readi16(b, offset), offset + 2
+	end,
+})
+
+Sera.Int24 = table.freeze({
+	Name = "Int24",
+	Ser = function(b: buffer, offset: number, value: number): number
+		buffer.writei8(b, offset, value)
+		buffer.writei16(b, offset + 1, value / 256)
+		return offset + 3
+	end,
+	Des = function(b: buffer, offset: number, value: number): (number, number)
+		return buffer.readi8(b, offset) + buffer.readi16(b, offset + 1) * 256, offset + 3
 	end,
 })
 
