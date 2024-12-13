@@ -1,5 +1,5 @@
 # Sera
-This is a Low-level schematized serialization library for handling limited size
+This is a Low-level schematized serialization library for Roblox for handling limited size
 dictionaries with primitive types. This library aims to do as few operations
 (table lookups, comparisons, etc.) as possible to achieve it's result while
 staying a good-enough serialization library.
