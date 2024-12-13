@@ -8,6 +8,10 @@ One notable limitation is that serialization schemas can only hold up to 255
 fields in Sera and it's going to stay that way - you may fork the project and
 easily change this for yourself.
 
+[Source Code](https://github.com/MadStudioRoblox/Sera/blob/main/Sera.luau)
+
+[Example Code](https://github.com/MadStudioRoblox/Sera/blob/main/Test.luau)
+
 ## Example:
 
 ```lua
