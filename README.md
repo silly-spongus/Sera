@@ -4,6 +4,7 @@ This is a Low-level schematized serialization library for Roblox for handling li
 Sera's intended purpose is to help with serialization schemas when handling high-efficiency game entity replication to clients. Note that this is not a module for beginners and you should at least know the basics of using the [`buffer`](https://create.roblox.com/docs/reference/engine/libraries/buffer) class.
 
 ## Perks:
+- Fast.
 - Efficient-enough representation of a dictionary inside a `buffer`.
 - `Sera.Serialize`, `Sera.Push`, `Sera.DeltaSerialize` and `Sera.DeltaPush` outputs can be combined inside a large buffer - `Sera.Deserialize` and `Sera.DeltaDeserialize` understand when an entry ends given a buffer and offset and returns a new offset for the developer to continue reading the buffer.
 - `Sera.DeltaSerialize` and `Sera.DeltaPush` treats a schema as an enumerator and serializes an incomplete dictionary with added (n + 1) bytes in the output where "n" is the number of fields present.
