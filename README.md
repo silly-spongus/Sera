@@ -14,6 +14,8 @@ Sera's intended purpose is to help with serialization schemas when handling high
 
 [Longer Example Code](https://github.com/MadStudioRoblox/Sera/blob/main/Test.luau)
 
+[Join the discussion in the Roblox Developer Forum (click here)](https://devforum.roblox.com/t/sera-low-level-schematized-serialization-library/3304206)
+
 ***This is an experimental project - there will be no guarantees for backwards-compatibility on further updates***
 
 ## Short Example:
