@@ -14,6 +14,7 @@ MAD STUDIO
 
 		Sera.Uint8
 		Sera.Uint16
+		Sera.Uint24
 		Sera.Uint32
 		Sera.Int8
 		Sera.Int16
