@@ -12,6 +12,8 @@ easily change this for yourself.
 
 [Example Code](https://github.com/MadStudioRoblox/Sera/blob/main/Test.luau)
 
+***This is an experimental project - there will be no guarantees for backwards-compatibility on further updates***
+
 ## Example:
 
 ```lua
