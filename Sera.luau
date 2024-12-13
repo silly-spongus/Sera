@@ -58,6 +58,9 @@ MAD STUDIO
 		Sera.DeltaSerialize(schema: Schema, t: {[any]: any}): (buffer?, err: string?)
 		Sera.DeltaPush(schema: Schema, t: {[any]: any}, b: buffer, offset: number?): (offset: number?, err: string?)
 
+		-- Delta serialization has an additional size cost of (n + 1) bytes where "n" is the number of fields present
+		-- in a table that's being serialized (1 byte for present field count, 1 enumerating byte for each field)
+
 --]]
 
 local BIG_BUFFER_SIZE = 1000000 -- "Serialize" and "DeltaSerialize" will fail if resulting buffer size is larger than this value
