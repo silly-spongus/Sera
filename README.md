@@ -10,11 +10,11 @@ easily change this for yourself.
 
 [Source Code](https://github.com/MadStudioRoblox/Sera/blob/main/Sera.luau)
 
-[Example Code](https://github.com/MadStudioRoblox/Sera/blob/main/Test.luau)
+[Longer Example Code](https://github.com/MadStudioRoblox/Sera/blob/main/Test.luau)
 
 ***This is an experimental project - there will be no guarantees for backwards-compatibility on further updates***
 
-## Example:
+## Short Example:
 
 ```lua
 
