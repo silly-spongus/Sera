@@ -7,11 +7,11 @@ MAD STUDIO
 -[Sera]---------------------------------------
 
 	Low-level schematized serialization library
-	
+
 	Members:
-	
+
 		Sera.Boolean
-		
+
 		Sera.Uint8
 		Sera.Uint16
 		Sera.Uint32
@@ -20,40 +20,40 @@ MAD STUDIO
 		Sera.Int32
 		Sera.Float32
 		Sera.Float64
-		
+
 		Sera.CFrame
 		Sera.V3xy -- Vector3 with only X and Y components serialized
 		Sera.Vector3
 		Sera.Color3
-		
+
 		Sera.String8  -- Max 255 size
 		Sera.String16 -- Max 65,535 size
 		Sera.String32 -- Max 4,294,967,295 size
-		
+
 		Sera.Buffer8  -- Max 255 size
 		Sera.Buffer16 -- Max 65,535 size
 		Sera.Buffer32 -- Max 4,294,967,295 size
-	
+
 	Functions:
-	
+
 		Sera.Schema(params): Schema -- Maximum 255 fields
 			params:
 				{
 					["FieldName"]: SeraType,
 					...
 				}
-				
+
 		-- "Serialize", "Push", "DeltaSerialize" and "DeltaPush" will return first argument if succeeded,
 		-- Or return an error message as the second argument if failed.
-				
+
 		-- When all fields are present (Non-schema fields are ignored; Missing fields will throw an error):
-				
+
 		Sera.Deserialize(schema: Schema, b: buffer, offset: number?): ({[string]: any}, offset: number)
 		Sera.Serialize(schema: Schema, t: {[any]: any}): (buffer?, err: string?)
 		Sera.Push(schema: Schema, t: {[any]: any}, b: buffer, offset: number?): (offset: number?, err: string?)
-		
+
 		-- When only some fields are present (Non-schema fields will throw an error):
-		
+
 		Sera.DeltaDeserialize(schema: Schema, b: buffer, offset: number?): ({[string]: any}, offset: number)
 		Sera.DeltaSerialize(schema: Schema, t: {[any]: any}): (buffer?, err: string?)
 		Sera.DeltaPush(schema: Schema, t: {[any]: any}, b: buffer, offset: number?): (offset: number?, err: string?)
@@ -130,6 +130,18 @@ Sera.Uint16 = table.freeze({
 	Des = function(b: buffer, offset: number): (number, number)
 		return buffer.readu16(b, offset), offset + 2
 	end,
+})
+
+Sera.Uint24 = table.freeze({
+    Name = "Uint24",
+    Ser = function(b: buffer, offset: number, value: number): number
+        buffer.writeu8(b, offset, value)
+        buffer.writeu16(b, offset + 1, bit32.rshift(value, 8))
+        return offset + 3
+    end,
+    Des = function(b: buffer, offset: number): (number, number)
+        return buffer.readu8(b, offset) + bit32.lshift(buffer.readu16(b, offset + 1), 8), offset + 3
+    end,
 })
 
 Sera.Uint32 = table.freeze({
