@@ -10,7 +10,7 @@ Sera's intended purpose is to help with serialization shemas when handling high-
 - Schemas can only hold up to 255 fields in Sera and it's going to stay that way - you may fork the project and easily change this for yourself.
 - `Sera.Serialize` and `Sera.DeltaSerialize` will fail if resulting buffer size is larger than  the constant `BIG_BUFFER_SIZE` inside the `Sera` module - This value should be moderate, but within reason since that's the memory `Sera` will take and never release during runtime.
 
-[Source Code](https://github.com/MadStudioRoblox/Sera/blob/main/Sera.luau)
+[Source Code (Single ModuleScript)](https://github.com/MadStudioRoblox/Sera/blob/main/Sera.luau)
 
 [Longer Example Code](https://github.com/MadStudioRoblox/Sera/blob/main/Test.luau)
 
