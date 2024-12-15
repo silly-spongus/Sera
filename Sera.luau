@@ -14,7 +14,6 @@ MAD STUDIO
 
 		Sera.Uint8
 		Sera.Uint16
-		Sera.Uint24
 		Sera.Uint32
 		Sera.Int8
 		Sera.Int16
@@ -24,7 +23,6 @@ MAD STUDIO
 		Sera.Float64
 
 		Sera.CFrame
-		Sera.V3xy -- Vector3 with only X and Y components serialized
 		Sera.Vector3
 		Sera.Color3
 
@@ -132,18 +130,6 @@ Sera.Uint16 = table.freeze({
 	Des = function(b: buffer, offset: number): (number, number)
 		return buffer.readu16(b, offset), offset + 2
 	end,
-})
-
-Sera.Uint24 = table.freeze({
-    Name = "Uint24",
-    Ser = function(b: buffer, offset: number, value: number): number
-        buffer.writeu8(b, offset, value)
-        buffer.writeu16(b, offset + 1, bit32.rshift(value, 8))
-        return offset + 3
-    end,
-    Des = function(b: buffer, offset: number): (number, number)
-        return buffer.readu8(b, offset) + bit32.lshift(buffer.readu16(b, offset + 1), 8), offset + 3
-    end,
 })
 
 Sera.Uint32 = table.freeze({
@@ -264,22 +250,6 @@ Sera.CFrame = table.freeze({
 			buffer.readf32(b, offset + 40),
 			buffer.readf32(b, offset + 44)
 		), offset + 48
-	end,
-})
-
-Sera.V3xy = table.freeze({
-	Name = "V3xy",
-	Ser = function(b: buffer, offset: number, value: Vector3): number
-		buffer.writef32(b, offset, value.X)
-		buffer.writef32(b, offset + 4, value.Y)
-		return offset + 8
-	end,
-	Des = function(b: buffer, offset: number): (Vector3, number)
-		return Vector3.new(
-			buffer.readf32(b, offset),
-			buffer.readf32(b, offset + 4),
-			0
-		), offset + 8
 	end,
 })
 
