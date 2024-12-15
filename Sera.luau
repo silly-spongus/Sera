@@ -182,12 +182,19 @@ Sera.Int16 = table.freeze({
 Sera.Int24 = table.freeze({
 	Name = "Int24",
 	Ser = function(b: buffer, offset: number, value: number): number
-		buffer.writei8(b, offset, value)
-		buffer.writei16(b, offset + 1, value / 256)
+		if value < 0 then
+			value += 16777216
+		end
+		buffer.writeu16(b, offset, bit32.rshift(value, 8))
+		buffer.writeu8(b, offset + 2, bit32.band(value, 255))
 		return offset + 3
 	end,
 	Des = function(b: buffer, offset: number, value: number): (number, number)
-		return buffer.readi8(b, offset) + buffer.readi16(b, offset + 1) * 256, offset + 3
+		local value = bit32.lshift(buffer.readu16(b, offset), 8) + buffer.readu8(b, offset + 2)
+		if value > 8388608 then
+			value -= 16777216
+		end
+		return value, offset + 3
 	end,
 })
 
